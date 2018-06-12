@@ -8,14 +8,14 @@ import pdb
 
 def get_baidu_links(page_url):
     # page_url = "http://www.91baiduyun.com/thread-38640-166-1.html"
-    print(page_url)
+    print(page_url + "<br/>")
     soup = BeautifulSoup(requests.get(page_url).content, "lxml")
     try: 
         links = [re.findall(r'\https://pan.baidu.com.*', content.text)[0] for content in soup.find_all("td", class_ = "t_f")]
         for link in links:
             print("<a href='%s'>%s</a><br/>" % (link, link))
     except IndexError:
-        print("This page don't have baidu link")
+        print("This page don't have baidu link <br/>")
 
     
 
